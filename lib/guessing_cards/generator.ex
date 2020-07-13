@@ -1,4 +1,6 @@
 defmodule GuessingCards.Generator do
+  @moduledoc false
+
   use Bitwise
 
   @spec cards(integer()) :: [GuessingCards.card()]

@@ -1,4 +1,6 @@
 defmodule GuessingCards do
+  @moduledoc false
+
   @type card() :: [integer()]
 
   @spec run(integer()) :: String.t()

@@ -1,4 +1,6 @@
 defmodule GuessingCards.CLI do
+  @moduledoc false
+
   @spec main(OptionParser.argv()) :: :ok
   def main(argv \\ []) do
     argv

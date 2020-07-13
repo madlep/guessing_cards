@@ -1,4 +1,6 @@
 defmodule GuessingCards.Renderer do
+  @moduledoc false
+
   @spec render([GuessingCards.card()]) :: String.t()
   def render(cards) do
     cards
