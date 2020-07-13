@@ -1,22 +1,21 @@
 defmodule GuessingCards.Renderer do
   @moduledoc false
 
-  @spec render([GuessingCards.card()]) :: String.t()
+  @spec render([GuessingCards.Card.t()]) :: String.t()
   def render(cards) do
     cards
-    |> Enum.with_index()
     |> Enum.map(&render_card/1)
     |> IO.iodata_to_binary()
   end
 
   @cards_per_row 6
 
-  @spec render_card({GuessingCards.card(), integer()}, integer()) :: iodata()
-  defp render_card({card, card_num}, cards_per_row \\ @cards_per_row) do
+  @spec render_card(GuessingCards.Card.t(), integer()) :: iodata()
+  defp render_card(%GuessingCards.Card{id: id, numbers: numbers}, cards_per_row \\ @cards_per_row) do
     [
       ["---\n"],
-      ["Card:", (card_num + 1) |> to_string(), "\n"],
-      card
+      ["Card:", id |> to_string(), "\n"],
+      numbers
       |> Enum.chunk_every(cards_per_row)
       |> Enum.map(&render_row/1),
       "\n\n"
